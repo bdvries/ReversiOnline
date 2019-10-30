@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using ReversiOnline.Reversi.Board;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ReversiOnline.Reversi
@@ -6,6 +8,7 @@ namespace ReversiOnline.Reversi
     public class ReversiBoard
     {
         private readonly int BOARD_SIZE = 64;
+        private readonly int BOARD_WIDTH = 8;
         private readonly List<int> START_PLAYER_1 = new List<int> { 27, 36};
         private readonly List<int> START_PLAYER_2 = new List<int> { 28, 35};
 
@@ -26,9 +29,9 @@ namespace ReversiOnline.Reversi
             }
         }
 
-        public bool MakeMove(int place, Players player)
+        public bool TryMakeMove(int place, Players player)
         {
-            var validMove = Validatemove(place, player);
+            var validMove = ValidateMove(place, player);
 
             if (validMove)
             {
@@ -38,20 +41,34 @@ namespace ReversiOnline.Reversi
             return validMove;
         }
 
-        public bool Validatemove(int place, Players player)
+        public bool ValidateMove(int place, Players player)
         {
-            var validMove = Board[place] == Players.NONE;
+            var playerIsNone = Board[place] == Players.NONE;
+            var validDirection = MoveResultsInFilledFields(place, player);
+
             
+
             // todo check if the player can make the move.
-            return ;
+            return playerIsNone && validDirection;
         }
 
-        public bool CheckDirection(int place, Players player, Direction direction)
-        {
-            if ()
-            {
 
+        private bool MoveResultsInDiskColorChanges(int place, Players player)
+        {
+            foreach (WindDirection windDirection in Enum.GetValues(typeof(WindDirection)))
+            {
+                var offset = windDirection.TranslateDirection();
+                do
+                {
+                    place = offset.AddDirectionToCoordinate(place, BOARD_WIDTH);
+                } while (Board[place] == player);
+
+                if (Board[place] == player.Negate())
+                {
+                    return true;
+                }
             }
+
             return false;
         }
     }

@@ -5,38 +5,38 @@ namespace ReversiOnline.Reversi
 {
     public static class EnumExtensions
     {
-        public static Direction TranslateDirection(this WindDirections direction)
+        public static Direction TranslateDirection(this WindDirection direction)
         {
             int horizontal = 0;
             int vertical = 0;
 
             switch (direction)
             {
-                case WindDirections.N:
+                case WindDirection.N:
                     vertical = 1;
                     break;
-                case WindDirections.E:
+                case WindDirection.E:
                     horizontal = 1;
                     break;
-                case WindDirections.S:
+                case WindDirection.S:
                     vertical = -1;
                     break;
-                case WindDirections.W:
+                case WindDirection.W:
                     horizontal = -1;
                     break;
-                case WindDirections.NE:
+                case WindDirection.NE:
                     vertical = 1;
                     horizontal = 1;
                     break;
-                case WindDirections.SE:
+                case WindDirection.SE:
                     vertical = -1;
                     horizontal = 1;
                     break;
-                case WindDirections.NW:
+                case WindDirection.NW:
                     vertical = 1;
                     horizontal = -1;
                     break;
-                case WindDirections.SW:
+                case WindDirection.SW:
                     vertical = -1;
                     horizontal = -1;
                     break;

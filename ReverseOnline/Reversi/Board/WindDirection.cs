@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ReversiOnline.Reversi.Board
 {
-    public enum WindDirections
+    public enum WindDirection
     {
         N,
         E,
