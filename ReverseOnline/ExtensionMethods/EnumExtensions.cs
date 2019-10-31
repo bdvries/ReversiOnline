@@ -13,31 +13,31 @@ namespace ReversiOnline.Reversi
             switch (direction)
             {
                 case WindDirection.N:
-                    vertical = 1;
+                    vertical = -1;
                     break;
                 case WindDirection.E:
                     horizontal = 1;
                     break;
                 case WindDirection.S:
-                    vertical = -1;
+                    vertical = 1;
                     break;
                 case WindDirection.W:
                     horizontal = -1;
                     break;
                 case WindDirection.NE:
-                    vertical = 1;
+                    vertical = -1;
                     horizontal = 1;
                     break;
                 case WindDirection.SE:
-                    vertical = -1;
+                    vertical = 1;
                     horizontal = 1;
                     break;
                 case WindDirection.NW:
-                    vertical = 1;
+                    vertical = -1;
                     horizontal = -1;
                     break;
                 case WindDirection.SW:
-                    vertical = -1;
+                    vertical = 1;
                     horizontal = -1;
                     break;
                 default:
